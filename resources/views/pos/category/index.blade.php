@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Category')
+@section('title','Halaman Kategori')
 
 @section('css')
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>

@@ -16,24 +16,23 @@
                     @endforeach
                 </ul>
             @endif
-            <div class="card card-primary">
-                {{-- From Start --}}
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ url('category') }}" class="btn btn-success btn-sm btn-flat"><i class="fa fa-backward"></i> Kembali</a>
+                </div>
                 <form action="{{ url('category') }}" method="POST" autocomplete="off">
                     @csrf
-                    {{-- Card-body Start --}}
                     <div class="card-body">
                         <div class="form-group">
                             <label>Nama Kategori</label>
-                            <input type="text" class="form-control" name="category_name" placeholder="Enter name" value="{{ old('category_name') }}">
+                            <input type="text" class="form-control" name="category_name" placeholder="Enter name category" value="{{ old('category_name') }}">
                         </div>
                     </div>
-                    {{-- Card-body End --}}
 
-                    <div class="card-footer text-end">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="card-footer d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary btn-sm btn-flat">Submit</button>
                     </div>
                 </form>
-                {{-- Form End --}}
             </div>
         </div>
     </div>
