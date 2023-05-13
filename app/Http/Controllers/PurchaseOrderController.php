@@ -8,6 +8,7 @@ use App\Models\Purchase_order_line;
 use App\Models\Supplier;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class PurchaseOrderController extends Controller
@@ -46,36 +47,37 @@ class PurchaseOrderController extends Controller
             $document_no = $request->document_no;
             $supplier_id = $request->supplier_id;
 
-            $id_po = Purchase_order::insertGetId([
-                'document_no' => $document_no,
-                'supplier_id' => $supplier_id,
-                'status_id' => 1,
-                'created_at' => date('d-m-Y'),
-                'updated_at' => date('d-m-Y'),
-            ]);
-            // $purchase = Purchase_order::create($request->all());
-
-            foreach ($qty as $i => $qt) {
-                if ($qt == 0) {
-                    continue;
-                }
-
-                $data_product = Product::where('id_product', $product_id[$i])->first();
-                $buy = $data_product->purchase_price;
-                $grand_total = $qt * $buy;
-
-                Purchase_order_line::insert([
-                    'purchase_order_id' => $id_po,
-                    'product_id' => $product_id[$i],
-                    'qty' => $qt,
-                    'buy' => $buy,
-                    'grand_total' => $grand_total,
+            DB::transaction(function () use ($product_id, $qty, $document_no, $supplier_id) {
+                $id_po = Purchase_order::insertGetId([
+                    'document_no' => $document_no,
+                    'supplier_id' => $supplier_id,
+                    'status_id' => 1,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ]);
-            }
+
+                foreach ($qty as $i => $qt) {
+                    if ($qt == 0) {
+                        continue;
+                    }
+
+                    $dt_product = Product::where('id_product', $product_id[$i])->first();
+                    $buy = $dt_product->purchase_price;
+                    $grand_total = $qt * $buy;
+
+                    Purchase_order_line::insert([
+                        'purchase_order_id' => $id_po,
+                        'product_id' => $product_id[$i],
+                        'qty' => $qt,
+                        'buy' => $buy,
+                        'grand_total' => $grand_total,
+                    ]);
+                }
+            });
             Session::flash('status', 'success');
-            Session::flash('message', 'Tambah Data Berhasil');
-        } catch (Exception $i) {
-            Session::flash('error', 'gagal');
+            Session::flash('message', 'Simpan data berhasil');
+        } catch (exception $e) {
+            Session::flash('gagal', $e->getMessage());
         }
         return redirect('purchase');
     }
@@ -130,21 +132,5 @@ class PurchaseOrderController extends Controller
             Session::flash('message', 'Data Berhasil Hapus');
         }
         return redirect()->back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Purchase_order $purchase_order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Purchase_order $purchase_order)
-    {
-        //
     }
 }

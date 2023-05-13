@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Purchase')
+@section('title', 'Halaman Pembelian Produk')
 
 @section('css')
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                        <a href="{{ url('purchase/create') }}" class="btn btn-success btn-flat-btn-sm"><i class="fa fa-plus"></i> Tambah</a>
+                        <a href="{{ url('purchase/create') }}" class="btn btn-success btn-flat btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah</a>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>

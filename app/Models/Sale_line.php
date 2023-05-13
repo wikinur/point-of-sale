@@ -11,6 +11,7 @@ class Sale_line extends Model
     protected $table = 'sale_line';
     protected $PrimaryKey = 'id_sale_line';
     // protected $fillable =[''];
+    public $timestamps = false;
 
     // relasi many to one
     public function product()

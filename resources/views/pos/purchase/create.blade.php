@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'create Purchase')
+@section('title', 'Tambah Pembelian')
 
 @section('content')
     <div class="row">
@@ -9,7 +9,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        {{-- <a href="{{ url('purchase') }}" class="btn btn-success btn-flat-btn-sm"><i class="fa fa-backward"></i> Back</a> --}}
+                        <a href="{{ url('purchase') }}" class="btn btn-success btn-flat btn-sm"><i class="fa fa-backward"></i> Kembali</a>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>

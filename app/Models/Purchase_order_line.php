@@ -10,7 +10,7 @@ class Purchase_order_line extends Model
     use HasFactory;
     protected $table = 'purchase_order_line';
     protected $primaryKey = 'id_po_line';
-    protected $fillable = ['purchase_order_id', 'product_id', 'qty', 'buy', 'grand_total'];
+    // protected $fillable = ['purchase_order_id', 'product_id', 'qty', 'buy', 'grand_total'];
     public $timestamps = false;
 
     public function products()
