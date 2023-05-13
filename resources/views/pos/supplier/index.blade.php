@@ -1,10 +1,9 @@
 @extends('layouts.master')
 
-@section('title', 'Supplier')
+@section('title', 'Halaman Supplier')
 
 @section('content')
 <div id="controller">
-    <h1>@section('title', 'supplier')</h1>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
