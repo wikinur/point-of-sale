@@ -23,6 +23,8 @@ class ProductCreateRequest extends FormRequest
     {
         return [
             'product_name' => 'required',
+            'purchase_price' => 'required',
+            'selling_price' => 'required',
         ];
     }
 
@@ -30,6 +32,8 @@ class ProductCreateRequest extends FormRequest
     {
         return [
             'product_name.required' => 'Nama Produk  Wajib Diisi',
+            'purchase_price.required' => 'Harga Beli Produk  Wajib Diisi',
+            'selling_price.required' => 'Harga Jual Produk  Wajib Diisi',
         ];
     }
 }

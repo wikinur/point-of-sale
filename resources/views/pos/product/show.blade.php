@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Detail Data Product')
+@section('title', 'Detail Data Produk')
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                        <a href="{{ url('product') }}" class="btn btn-success btn-flat-btn-sm"><i class="fa fa-backward"></i> Back</a>
+                        <a href="{{ url('product') }}" class="btn btn-success btn-flat-btn-sm"><i class="fa fa-backward"></i> Kembali</a>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>

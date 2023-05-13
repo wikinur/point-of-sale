@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Product')
+@section('title', 'Halaman Produk')
 
 @section('css')
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
@@ -8,7 +8,6 @@
 
 @section('content')
 <div id="controller">
-    <h1>@section('title', 'product')</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
