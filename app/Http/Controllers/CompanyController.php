@@ -30,12 +30,4 @@ class CompanyController extends Controller
         }
         return redirect('company');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
