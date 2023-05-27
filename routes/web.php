@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('purchase/approved/{id_purchase}', [PurchaseOrderController::class, 'approved']);
     Route::get('purchase/line/{id_po_line}', [PurchaseOrderController::class, 'delete_line']);
     Route::get('purchase/{id_purchase}', [PurchaseOrderController::class, 'update']);
+    Route::post('/pdf/{id_purchase}', [PurchaseOrderController::class, 'viewPdf'])->name('pdf');
     // Route Sale
     Route::resource('/sale', SaleController::class);
     Route::get('product/ajax/{code_product}', [SaleController::class, 'get_product']);

@@ -21,7 +21,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                    <div class="d-flex justify-content-space-between">
                         <a href="{{ url('purchase') }}" class="btn btn-success btn-flat btn-sm"><i class="fa fa-backward"></i> Kembali</a>
+                        &nbsp;
+                        <form action="{{ url('pdf/'.$purchase->id_purchase) }}" method="post" target="_blank">
+                            @csrf
+                            <button class="btn btn-danger btn-flat btn-sm"><i class="fa fa-download"></i> Export PDF</button>
+                        </form>
+                    </div>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>

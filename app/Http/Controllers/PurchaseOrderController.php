@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Product;
 use App\Models\Purchase_order;
 use App\Models\Purchase_order_line;
@@ -20,6 +21,18 @@ class PurchaseOrderController extends Controller
             ->get();
 
         return view('pos.purchase.index', compact('purchases'));
+    }
+
+    public function viewpdf($id_purchase)
+    {
+        // $data = Purchase_order::with('suppliers')->find($id_purchase);
+        // $pdf = PDF::loadHTML('<h1>berhasil</h1>');
+        // return $pdf->stream();
+        $purchase = Purchase_order::with(['suppliers', 'statuss', 'lines'])->find($id_purchase);
+        $ph = Company::first();
+
+        return view('pos.purchase.pdf', compact('purchase', 'ph'));
+
     }
 
     public function create()
